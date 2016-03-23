@@ -7,6 +7,7 @@ module.exports = (grunt) ->
     {WIN_P12_PASS} = process.env
     keyFile = path.resolve(__dirname, '..', 'certs', 'AtomDevTestSign.p12')
     args = ['sign', '/v', '/p', WIN_P12_PASS ? 'password', '/f', keyFile, exeToSign]
+    grunt.log.ok('Signing ' + exeToSign + ' with ' + keyFile)
     spawn {cmd: 'C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1A\\bin\\signtool.exe', args: args}, callback
 
   signUsingJanky = (exeToSign, callback) ->
